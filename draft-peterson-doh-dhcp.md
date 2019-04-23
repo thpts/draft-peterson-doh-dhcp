@@ -17,7 +17,19 @@ stand_alone: yes
 pi: [toc, sortrefs, symrefs]
 
 normative:
-  RFC2119:
+    RFC2119:
+    RFC3986:
+
+informative:
+    bootp-registry:
+        title: "Dynamic Host Configuration Protocol (DHCP) and Bootstrap Protocol (BOOTP) Parameters"
+        target: http://www.iana.org/assignments/bootp-dhcp-parameters
+    dhcpv6-registry:
+        title: "Dynamic Host Configuration Protocol for IPv6 (DHCPv6)"
+        target: http://www.iana.org/assignments/dhcpv6-parameters
+    icmpv6-registry:
+        title: "Internet Control Message Protocol version 6 (ICMPv6) Parameters"
+        target: http://www.iana.org/assignments/icmpv6-parameters
 
 --- abstract
 
@@ -40,7 +52,8 @@ when, and only when, they appear in all capitals, as shown here.
 
 ## Relationship with existing
 
-DHCP already provides {{!RFC3132}} .
+Both DHCP {{!RFC3132}} and IPv6 Router Announcements {{!RFC8106}} provide means
+to inform clients of available
 
 # The DoH Option
 
@@ -50,7 +63,6 @@ use for .
 In order to support multiple "classes" of clients, the network operator can provide
 the URI template {{!RFC6570}} which describes how a client can construct the URL
 to use for resolution.
-
 
 The maximum length of the URI template that can be carried in IPv4 DHCP is 255
 bytes, so URI templates longer than 255 bytes SHOULD NOT be used in IPv6 DHCP or
@@ -62,39 +74,81 @@ The format of the IPv4 DoH DHCP option is shown below.
 
 {#fig-bit-string-layout}
 ~~~
-
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Code      |     Length    |      URI Template             .
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               .
+.                                                               .
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~
 
 * Code: The DoH DHCPv4 option (one octet).
 * Len: The length, in octets of the URI template.
-* URI Template: The DoH resolver available for use
+* URI Template: The DoH resolver available, encoded following the rules of
+{{RFC3986}}.
 
 ## IPv6 DHCP Option
 
-~~~
+The format of the IPv6 Captive-Portal DHCP option is shown below.
 
 ~~~
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|          option-code          |           option-len          |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+.                                                               .
++                          URI Template                         +
+|                                                               |
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+~~~
+
+* option-code: TODO (two octects)
+* option-len: The length, in octects of the URI Template.
+* URI Template: The DoH resolver
 
 ## The DoH IPv6 RA Option
 
 The format of the DoH Router Advertisement option is shown below.
 
 ~~~
-
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Type      |     Length    |      URI Template             .
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               .
+.                                                               .
+.                                                               .
+.                                                               .
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~
 
 * Type: TODO
 * Length: 8-bit unsigned integer representing the entire length of all fields,
 in units of 8 bytes.
-* URI Template: The DoH resolver available for use
+* URI Template: The DoH resolver available for use. This should be padded with
+NULL (0x0) to make the total option length (including the Type and Length
+fields) a multiple of 8 bytes.
 
 # Security Considerations
 
-This document currently has no security considerations.
+An attacker with the ability to inject DHCP messages could include this option
+and present a malicious resolver.
+
+TODO: Further risk and threat assessments.
 
 # IANA Considerations
 
-This document makes no request of IANA.
+TODO: This section must be updated after assignments have been issued.
+
+This document requires the assignment of an option code assigned under the
+"BOOTP Vendor Extensions and DHCP Options" {{bootp-registry}}, in
+addition to an option code assigned under the "Option Codes" registry under
+DHCPv6 parameters {{dhcpv6-registry}}.
+
+Also, an assignment for an IPv6 RA Option Type from the "IPv6 Neighbor Discovery
+Option Formats" registry under ICMPv6 paramters {{icmpv6-registry}}.
 
 --- back
 
