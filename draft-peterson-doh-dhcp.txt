@@ -55,14 +55,13 @@ Copyright Notice
 
 Peterson                Expires October 25, 2019                [Page 1]
 
-Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
+Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
 
 
 Table of Contents
 
    1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
    2.  Conventions and Definitions . . . . . . . . . . . . . . . . .   2
-     2.1.  Relationship with existing  . . . . . . . . . . . . . . .   2
    3.  The DoH Option  . . . . . . . . . . . . . . . . . . . . . . .   2
      3.1.  IPv4 DHCP Option  . . . . . . . . . . . . . . . . . . . .   3
      3.2.  IPv6 DHCP Option  . . . . . . . . . . . . . . . . . . . .   3
@@ -72,12 +71,15 @@ Table of Contents
    6.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   4
      6.1.  Normative References  . . . . . . . . . . . . . . . . . .   4
      6.2.  Informative References  . . . . . . . . . . . . . . . . .   5
-   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .   5
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   5
+   Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   6
 
 1.  Introduction
 
-   This document.
+   DHCPv4 [RFC3132], DHCPv6 [RFC3646], and IPv6 Router Announcements
+   [RFC8106] all provide means to inform clients of available resolvers
+   using the incumbent DNS protocol for querying, however there is no
+   means of specifying alternate protocols to perform DNS queries.
 
 2.  Conventions and Definitions
 
@@ -87,19 +89,19 @@ Table of Contents
    14 [RFC2119] [RFC8174] when, and only when, they appear in all
    capitals, as shown here.
 
-2.1.  Relationship with existing
-
-   Both DHCP [RFC3132] and IPv6 Router Announcements [RFC8106] provide
-   means to inform clients of available
-
 3.  The DoH Option
 
    The DoH DHCP/RA option informs the client that a DoH service is
-   available for use for .
+   available for use for answering DNS queries.  In order to support
+   multiple "classes" of clients, the network operator can provide the
+   URI template [RFC6570] which describes how a client can construct the
+   URL to use for resolution.  Whilst DoH servers may support multiple
+   URI Templates, only one template MUST be transmitted.
 
-   In order to support multiple "classes" of clients, the network
-   operator can provide the URI template [RFC6570] which describes how a
-   client can construct the URL to use for resolution.
+   URI Templates that contain a host name SHOULD only be sent where a
+   DHCP server or Router provide name servers, otherwise clients may
+   have no knowledge of an appropriate name server to use to perform a
+   DNS query of the respective host name.
 
    The maximum length of the URI template that can be carried in IPv4
    DHCP is 255 bytes, so URI templates longer than 255 bytes SHOULD NOT
@@ -107,29 +109,28 @@ Table of Contents
 
 
 
-
-
 Peterson                Expires October 25, 2019                [Page 2]
 
-Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
+Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
 
 
 3.1.  IPv4 DHCP Option
 
    The format of the IPv4 DoH DHCP option is shown below.
 
-   {#fig-bit-string-layout} ~~~ 0 1 2 3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
-   6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |
-   Code | Length | URI Template .  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ .
-   .  .
-   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ ~~~
+    0                   1                   2                   3
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+   |     Code      |     Length    |      URI Template             .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               .
+   .                                                               .
+   +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
    o  Code: The DoH DHCPv4 option (one octet).
 
-   o  Len: The length, in octets of the URI template.
+   o  Length: The length, in octets of the URI template.
 
-   o  URI Template: The DoH resolver available, encoded following the
+   o  URI Template: The DoH server available, encoded following the
       rules of [RFC3986].
 
 3.2.  IPv6 DHCP Option
@@ -142,15 +143,15 @@ Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
    |          option-code          |           option-len          |
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
    .                                                               .
-   +                          URI Template                         +
-   |                                                               |
+   .                          URI Template                         .
+   .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   o  option-code: TODO (two octects)
+   o  option-code: TODO (two octets)
 
    o  option-len: The length, in octects of the URI Template.
 
-   o  URI Template: The DoH resolver
+   o  URI Template: The DoH server
 
 3.3.  The DoH IPv6 RA Option
 
@@ -164,10 +165,9 @@ Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
 
 
 
-
 Peterson                Expires October 25, 2019                [Page 3]
 
-Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
+Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
 
 
     0                   1                   2                   3
@@ -177,15 +177,14 @@ Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               .
    .                                                               .
    .                                                               .
-   .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   o  Type: TODO
+   o  Type: TODO (one octet)
 
    o  Length: 8-bit unsigned integer representing the entire length of
       all fields, in units of 8 bytes.
 
-   o  URI Template: The DoH resolver available for use.  This should be
+   o  URI Template: The DoH server available for use.  This should be
       padded with NULL (0x0) to make the total option length (including
       the Type and Length fields) a multiple of 8 bytes.
 
@@ -221,14 +220,20 @@ Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
 
 
 
+
 Peterson                Expires October 25, 2019                [Page 4]
 
-Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
+Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
 
 
    [RFC3132]  Kempf, J., "Dormant Mode Host Alerting ("IP Paging")
               Problem Statement", RFC 3132, DOI 10.17487/RFC3132, June
               2001, <https://www.rfc-editor.org/info/rfc3132>.
+
+   [RFC3646]  Droms, R., Ed., "DNS Configuration options for Dynamic
+              Host Configuration Protocol for IPv6 (DHCPv6)", RFC 3646,
+              DOI 10.17487/RFC3646, December 2003,
+              <https://www.rfc-editor.org/info/rfc3646>.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66,
@@ -265,6 +270,18 @@ Internet-DraDoH resolver announcement using DHCP or Router A  April 2019
               Parameters", n.d.,
               <http://www.iana.org/assignments/icmpv6-parameters>.
 
+
+
+
+
+
+
+
+Peterson                Expires October 25, 2019                [Page 5]
+
+Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
+
+
 Acknowledgments
 
    TODO
@@ -277,4 +294,43 @@ Author's Address
 
 
 
-Peterson                Expires October 25, 2019                [Page 5]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Peterson                Expires October 25, 2019                [Page 6]

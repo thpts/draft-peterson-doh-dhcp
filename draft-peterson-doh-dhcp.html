@@ -283,7 +283,6 @@ ul.toc li {
   <link href="#rfc.toc" rel="Contents">
 <link href="#rfc.section.1" rel="Chapter" title="1 Introduction">
 <link href="#rfc.section.2" rel="Chapter" title="2 Conventions and Definitions">
-<link href="#rfc.section.2.1" rel="Chapter" title="2.1 Relationship with existing">
 <link href="#rfc.section.3" rel="Chapter" title="3 The DoH Option">
 <link href="#rfc.section.3.1" rel="Chapter" title="3.1 IPv4 DHCP Option">
 <link href="#rfc.section.3.2" rel="Chapter" title="3.2 IPv6 DHCP Option">
@@ -353,9 +352,7 @@ ul.toc li {
 </li>
 <li>2.   <a href="#rfc.section.2">Conventions and Definitions</a>
 </li>
-<ul><li>2.1.   <a href="#rfc.section.2.1">Relationship with existing</a>
-</li>
-</ul><li>3.   <a href="#rfc.section.3">The DoH Option</a>
+<li>3.   <a href="#rfc.section.3">The DoH Option</a>
 </li>
 <ul><li>3.1.   <a href="#rfc.section.3.1">IPv4 DHCP Option</a>
 </li>
@@ -384,32 +381,36 @@ ul.toc li {
   <h1 id="rfc.section.1">
 <a href="#rfc.section.1">1.</a> <a href="#introduction" id="introduction">Introduction</a>
 </h1>
-<p id="rfc.section.1.p.1">This document.</p>
+<p id="rfc.section.1.p.1">DHCPv4 <a href="#RFC3132" class="xref">[RFC3132]</a>, DHCPv6 <a href="#RFC3646" class="xref">[RFC3646]</a>, and IPv6 Router Announcements <a href="#RFC8106" class="xref">[RFC8106]</a> all provide means to inform clients of available resolvers using the incumbent DNS protocol for querying, however there is no means of specifying alternate protocols to perform DNS queries.</p>
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#conventions-and-definitions" id="conventions-and-definitions">Conventions and Definitions</a>
 </h1>
 <p id="rfc.section.2.p.1">The key words &#8220;MUST&#8221;, &#8220;MUST NOT&#8221;, &#8220;REQUIRED&#8221;, &#8220;SHALL&#8221;, &#8220;SHALL NOT&#8221;, &#8220;SHOULD&#8221;, &#8220;SHOULD NOT&#8221;, &#8220;RECOMMENDED&#8221;, &#8220;NOT RECOMMENDED&#8221;, &#8220;MAY&#8221;, and &#8220;OPTIONAL&#8221; in this document are to be interpreted as described in BCP 14 <a href="#RFC2119" class="xref">[RFC2119]</a> <a href="#RFC8174" class="xref">[RFC8174]</a> when, and only when, they appear in all capitals, as shown here.</p>
-<h1 id="rfc.section.2.1">
-<a href="#rfc.section.2.1">2.1.</a> <a href="#relationship-with-existing" id="relationship-with-existing">Relationship with existing</a>
-</h1>
-<p id="rfc.section.2.1.p.1">Both DHCP <a href="#RFC3132" class="xref">[RFC3132]</a> and IPv6 Router Announcements <a href="#RFC8106" class="xref">[RFC8106]</a> provide means to inform clients of available</p>
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#the-doh-option" id="the-doh-option">The DoH Option</a>
 </h1>
-<p id="rfc.section.3.p.1">The DoH DHCP/RA option informs the client that a DoH service is available for use for .</p>
-<p id="rfc.section.3.p.2">In order to support multiple &#8220;classes&#8221; of clients, the network operator can provide the URI template <a href="#RFC6570" class="xref">[RFC6570]</a> which describes how a client can construct the URL to use for resolution.</p>
+<p id="rfc.section.3.p.1">The DoH DHCP/RA option informs the client that a DoH service is available for use for answering DNS queries. In order to support multiple &#8220;classes&#8221; of clients, the network operator can provide the URI template <a href="#RFC6570" class="xref">[RFC6570]</a> which describes how a client can construct the URL to use for resolution. Whilst DoH servers may support multiple URI Templates, only one template MUST be transmitted.</p>
+<p id="rfc.section.3.p.2">URI Templates that contain a host name SHOULD only be sent where a DHCP server or Router provide name servers, otherwise clients may have no knowledge of an appropriate name server to use to perform a DNS query of the respective host name.</p>
 <p id="rfc.section.3.p.3">The maximum length of the URI template that can be carried in IPv4 DHCP is 255 bytes, so URI templates longer than 255 bytes SHOULD NOT be used in IPv6 DHCP or IPv6 RA.</p>
 <h1 id="rfc.section.3.1">
 <a href="#rfc.section.3.1">3.1.</a> <a href="#ipv4-dhcp-option" id="ipv4-dhcp-option">IPv4 DHCP Option</a>
 </h1>
 <p id="rfc.section.3.1.p.1">The format of the IPv4 DoH DHCP option is shown below.</p>
-<p id="rfc.section.3.1.p.2">{#fig-bit-string-layout} ~~~ 0                   1                   2                   3 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |     Code      |     Length    |      URI Template             .  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               .  .                                                               .  +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ ~~~</p>
+<pre>
+ 0                   1                   2                   3
+ 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+|     Code      |     Length    |      URI Template             .
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               .
+.                                                               .
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+</pre>
 <p></p>
 
 <ul>
 <li>Code: The DoH DHCPv4 option (one octet).</li>
-<li>Len: The length, in octets of the URI template.</li>
-<li>URI Template: The DoH resolver available, encoded following the rules of <a href="#RFC3986" class="xref">[RFC3986]</a>.</li>
+<li>Length: The length, in octets of the URI template.</li>
+<li>URI Template: The DoH server available, encoded following the rules of <a href="#RFC3986" class="xref">[RFC3986]</a>.</li>
 </ul>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#ipv6-dhcp-option" id="ipv6-dhcp-option">IPv6 DHCP Option</a>
@@ -422,16 +423,16 @@ ul.toc li {
 |          option-code          |           option-len          |
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 .                                                               .
-+                          URI Template                         +
-|                                                               |
+.                          URI Template                         .
+.                                                               .
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 <p></p>
 
 <ul>
-<li>option-code: TODO (two octects)</li>
+<li>option-code: TODO (two octets)</li>
 <li>option-len: The length, in octects of the URI Template.</li>
-<li>URI Template: The DoH resolver</li>
+<li>URI Template: The DoH server</li>
 </ul>
 <h1 id="rfc.section.3.3">
 <a href="#rfc.section.3.3">3.3.</a> <a href="#the-doh-ipv6-ra-option" id="the-doh-ipv6-ra-option">The DoH IPv6 RA Option</a>
@@ -445,15 +446,14 @@ ul.toc li {
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                               .
 .                                                               .
 .                                                               .
-.                                                               .
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 </pre>
 <p></p>
 
 <ul>
-<li>Type: TODO</li>
+<li>Type: TODO (one octet)</li>
 <li>Length: 8-bit unsigned integer representing the entire length of all fields, in units of 8 bytes.</li>
-<li>URI Template: The DoH resolver available for use. This should be padded with NULL (0x0) to make the total option length (including the Type and Length fields) a multiple of 8 bytes.</li>
+<li>URI Template: The DoH server available for use. This should be padded with NULL (0x0) to make the total option length (including the Type and Length fields) a multiple of 8 bytes.</li>
 </ul>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
@@ -480,6 +480,11 @@ ul.toc li {
 <td class="reference"><b id="RFC3132">[RFC3132]</b></td>
 <td class="top">
 <a>Kempf, J.</a>, "<a href="https://tools.ietf.org/html/rfc3132">Dormant Mode Host Alerting ("IP Paging") Problem Statement</a>", RFC 3132, DOI 10.17487/RFC3132, June 2001.</td>
+</tr>
+<tr>
+<td class="reference"><b id="RFC3646">[RFC3646]</b></td>
+<td class="top">
+<a>Droms, R.</a>, "<a href="https://tools.ietf.org/html/rfc3646">DNS Configuration options for Dynamic Host Configuration Protocol for IPv6 (DHCPv6)</a>", RFC 3646, DOI 10.17487/RFC3646, December 2003.</td>
 </tr>
 <tr>
 <td class="reference"><b id="RFC3986">[RFC3986]</b></td>
