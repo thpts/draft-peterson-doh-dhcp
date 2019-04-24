@@ -1,6 +1,6 @@
 ---
 title: "DNS over HTTP resolver announcement Using DHCP or Router Advertisements"
-abbrev: "DoH server announcement using DHCP or Router Advertisements"
+abbrev: "DoH using DHCP or Router Advertisements"
 docname: draft-peterson-doh-dhcp
 date: 2019
 author:
