@@ -63,9 +63,9 @@ servers may support multiple URI Templates, only one template MUST be
 transmitted.
 
 URI Templates that contain a host name SHOULD only be sent where a DHCP server
-or Router provide name servers, otherwise clients may have no knowledge of an
-appropriate name server to use to perform a DNS query of the respective host
-name.
+or Router provide name servers, as name resolution of any host name in the
+template will require clients to use the non-DoH servers provided or manual
+configuration.
 
 The maximum length of the URI template that can be carried in IPv4 DHCP is 255
 bytes, so URI templates longer than 255 bytes SHOULD NOT be used in IPv6 DHCP or
