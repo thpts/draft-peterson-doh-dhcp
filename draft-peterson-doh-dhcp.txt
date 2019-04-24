@@ -55,7 +55,7 @@ Copyright Notice
 
 Peterson                Expires October 26, 2019                [Page 1]
 
-Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
+Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
 
 Table of Contents
@@ -111,7 +111,7 @@ Table of Contents
 
 Peterson                Expires October 26, 2019                [Page 2]
 
-Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
+Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
 
 3.1.  IPv4 DHCP Option
@@ -167,7 +167,7 @@ Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
 
 Peterson                Expires October 26, 2019                [Page 3]
 
-Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
+Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
 
     0                   1                   2                   3
@@ -223,7 +223,7 @@ Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
 
 Peterson                Expires October 26, 2019                [Page 4]
 
-Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
+Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
 
    [RFC3132]  Kempf, J., "Dormant Mode Host Alerting ("IP Paging")
@@ -279,7 +279,7 @@ Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
 
 Peterson                Expires October 26, 2019                [Page 5]
 
-Internet-DraDoH server announcement using DHCP or Router Adv  April 2019
+Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
 
 Acknowledgments
