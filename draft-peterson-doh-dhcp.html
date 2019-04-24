@@ -301,7 +301,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Peterson, T." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-peterson-doh-dhcp" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-23" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-24" />
   <meta name="dct.abstract" content="This specification describes a DHCP option and Router Advertisement (RA) extension to inform clients of the presents of a DNS over HTTP (DoH) service to be used for DNS queries." />
   <meta name="description" content="This specification describes a DHCP option and Router Advertisement (RA) extension to inform clients of the presents of a DNS over HTTP (DoH) service to be used for DNS queries." />
 
@@ -318,10 +318,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Internet-Draft</td>
-<td class="right">April 23, 2019</td>
+<td class="right">April 24, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: October 25, 2019</td>
+<td class="left">Expires: October 26, 2019</td>
 <td class="right"></td>
 </tr>
 
@@ -338,7 +338,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on October 25, 2019.</p>
+<p>This Internet-Draft will expire on October 26, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -390,7 +390,7 @@ ul.toc li {
 <a href="#rfc.section.3">3.</a> <a href="#the-doh-option" id="the-doh-option">The DoH Option</a>
 </h1>
 <p id="rfc.section.3.p.1">The DoH DHCP/RA option informs the client that a DoH service is available for use for answering DNS queries. In order to support multiple &#8220;classes&#8221; of clients, the network operator can provide the URI template <a href="#RFC6570" class="xref">[RFC6570]</a> which describes how a client can construct the URL to use for resolution. Whilst DoH servers may support multiple URI Templates, only one template MUST be transmitted.</p>
-<p id="rfc.section.3.p.2">URI Templates that contain a host name SHOULD only be sent where a DHCP server or Router provide name servers, otherwise clients may have no knowledge of an appropriate name server to use to perform a DNS query of the respective host name.</p>
+<p id="rfc.section.3.p.2">URI Templates that contain a host name SHOULD only be sent where a DHCP server or Router provide name servers, as name resolution of any host name in the template will require clients to use the non-DoH servers provided or manual configuration.</p>
 <p id="rfc.section.3.p.3">The maximum length of the URI template that can be carried in IPv4 DHCP is 255 bytes, so URI templates longer than 255 bytes SHOULD NOT be used in IPv6 DHCP or IPv6 RA.</p>
 <h1 id="rfc.section.3.1">
 <a href="#rfc.section.3.1">3.1.</a> <a href="#ipv4-dhcp-option" id="ipv4-dhcp-option">IPv4 DHCP Option</a>
