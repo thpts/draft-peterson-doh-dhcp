@@ -1,8 +1,8 @@
 ---
 title: "DNS over HTTP resolver announcement Using DHCP or Router Advertisements"
 abbrev: "DoH using DHCP or Router Advertisements"
-docname: draft-peterson-doh-dhcp
-date: 2019
+docname: draft-peterson-doh-dhcp-00
+date: {DATE}
 author:
     -
       ins: T. Peterson
@@ -10,6 +10,7 @@ author:
       email: nosretep.samoht@gmail.com
 
 ipr: trust200902
+category: std
 area: General
 workgroup:
 keyword: Internet-Draft
@@ -21,6 +22,9 @@ normative:
     RFC3986:
 
 informative:
+    RFC3132:
+    RFC3646:
+    RFC8106:
     bootp-registry:
         title: "Dynamic Host Configuration Protocol (DHCP) and Bootstrap Protocol (BOOTP) Parameters"
         target: http://www.iana.org/assignments/bootp-dhcp-parameters
@@ -41,8 +45,8 @@ be used for DNS queries.
 
 # Introduction
 
-DHCPv4 {{!RFC3132}}, DHCPv6 {{!RFC3646}}, and IPv6 Router Announcements
-{{!RFC8106}} all provide means to inform clients of available resolvers using
+DHCPv4 {{RFC3132}}, DHCPv6 {{RFC3646}}, and IPv6 Router Announcements
+{{RFC8106}} all provide means to inform clients of available resolvers using
 the incumbent DNS protocol for querying, however there is no means of specifying
 alternate protocols to perform DNS queries.
 
