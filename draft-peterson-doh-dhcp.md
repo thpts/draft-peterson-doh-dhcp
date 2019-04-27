@@ -38,7 +38,7 @@ informative:
 --- abstract
 
 This specification describes a DHCP option and Router Advertisement (RA)
-extension to inform clients of the presents of a DNS over HTTP (DoH) service to
+extension to inform clients of the presence of a DNS over HTTP (DoH) service to
 be used for DNS queries.
 
 --- middle
