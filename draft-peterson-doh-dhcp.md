@@ -22,7 +22,7 @@ normative:
     RFC3986:
 
 informative:
-    RFC3132:
+    RFC2131:
     RFC3646:
     RFC8106:
     bootp-registry:
@@ -45,7 +45,7 @@ be used for DNS queries.
 
 # Introduction
 
-DHCPv4 {{RFC3132}}, DHCPv6 {{RFC3646}}, and IPv6 Router Announcements
+DHCPv4 {{RFC2131}}, DHCPv6 {{RFC3646}}, and IPv6 Router Announcements
 {{RFC8106}} all provide means to inform clients of available resolvers using
 the incumbent DNS protocol for querying, however there is no means of specifying
 alternate protocols to perform DNS queries.
