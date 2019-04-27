@@ -89,10 +89,14 @@ The format of the IPv4 DoH DHCP option is shown below.
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~
 
-* Code: The DoH DHCPv4 option (one octet).
-* Length: The length, in octets of the URI template.
-* URI Template: The DoH server available, encoded following the rules of
-{{RFC3986}}.
+Code:
+ : The DoH DHCPv4 option (one octet).
+
+Length:
+ : The length, in octets of the URI template.
+
+URI Template:
+ : The DoH server available, encoded following the rules of {{RFC3986}}.
 
 ## IPv6 DHCP Option
 
@@ -110,9 +114,14 @@ The format of the IPv6 Captive-Portal DHCP option is shown below.
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~
 
-* option-code: TODO (two octets)
-* option-len: The length, in octects of the URI Template.
-* URI Template: The DoH server
+option-code:
+ : TODO (two octets)
+
+option-len:
+ : The length, in octects of the URI Template.
+
+URI Template:
+ : The DoH server
 
 ## The DoH IPv6 RA Option
 
@@ -129,12 +138,17 @@ The format of the DoH Router Advertisement option is shown below.
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 ~~~
 
-* Type: TODO (one octet)
-* Length: 8-bit unsigned integer representing the entire length of all fields,
-in units of 8 bytes.
-* URI Template: The DoH server available for use. This should be padded with
-NULL (0x0) to make the total option length (including the Type and Length
-fields) a multiple of 8 bytes.
+Type:
+ : TODO (one octet)
+
+Length:
+ : 8-bit unsigned integer representing the entire length of all fields, in units
+   of 8 bytes.
+
+URI Template:
+ : The DoH server available for use. This should be padded with NULL (0x0) to
+   make the total option length (including the Type and Length fields) a
+   multiple of 8 bytes.
 
 # Security Considerations
 
