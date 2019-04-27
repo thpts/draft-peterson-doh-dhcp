@@ -3,9 +3,9 @@
 
 
 Network Working Group                                        T. Peterson
-Internet-Draft                                            April 25, 2019
+Internet-Draft                                            April 27, 2019
 Intended status: Standards Track
-Expires: October 27, 2019
+Expires: October 29, 2019
 
 
 DNS over HTTP resolver announcement Using DHCP or Router Advertisements
@@ -14,7 +14,7 @@ DNS over HTTP resolver announcement Using DHCP or Router Advertisements
 Abstract
 
    This specification describes a DHCP option and Router Advertisement
-   (RA) extension to inform clients of the presents of a DNS over HTTP
+   (RA) extension to inform clients of the presence of a DNS over HTTP
    (DoH) service to be used for DNS queries.
 
 Status of This Memo
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 27, 2019.
+   This Internet-Draft will expire on October 29, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Peterson                Expires October 27, 2019                [Page 1]
+Peterson                Expires October 29, 2019                [Page 1]
 
 Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Peterson                Expires October 27, 2019                [Page 2]
+Peterson                Expires October 29, 2019                [Page 2]
 
 Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
@@ -165,7 +165,7 @@ Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
 
 
-Peterson                Expires October 27, 2019                [Page 3]
+Peterson                Expires October 29, 2019                [Page 3]
 
 Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
@@ -221,7 +221,7 @@ Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
 
 
-Peterson                Expires October 27, 2019                [Page 4]
+Peterson                Expires October 29, 2019                [Page 4]
 
 Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
@@ -277,7 +277,7 @@ Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
 
 
-Peterson                Expires October 27, 2019                [Page 5]
+Peterson                Expires October 29, 2019                [Page 5]
 
 Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
 
@@ -333,4 +333,4 @@ Author's Address
 
 
 
-Peterson                Expires October 27, 2019                [Page 6]
+Peterson                Expires October 29, 2019                [Page 6]
