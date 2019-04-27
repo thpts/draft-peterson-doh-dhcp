@@ -8,7 +8,8 @@ venv: requirements.txt
 clean:
 	rm -rf venv
 
-generate:
+generate: venv
 	PYTHONPATH=src:${PYTHONPATH} protocol "Code:8,Len:8,URI Template:48" > dhcpv4.txt
 	PYTHONPATH=src:${PYTHONPATH} protocol "option-code:16,option-len:16,URI Template:64" > dhcpv6.txt
 	PYTHONPATH=src:${PYTHONPATH} protocol "Type:8,Len:8,URI Template:64" > ra.txt
+	cat {dhcpv4,dhcpv6,ra}.txt
