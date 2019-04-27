@@ -76,7 +76,7 @@ Table of Contents
 
 1.  Introduction
 
-   DHCPv4 [RFC3132], DHCPv6 [RFC3646], and IPv6 Router Announcements
+   DHCPv4 [RFC2131], DHCPv6 [RFC3646], and IPv6 Router Announcements
    [RFC8106] all provide means to inform clients of available resolvers
    using the incumbent DNS protocol for querying, however there is no
    means of specifying alternate protocols to perform DNS queries.
@@ -256,9 +256,9 @@ Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
               Parameters", n.d.,
               <http://www.iana.org/assignments/icmpv6-parameters>.
 
-   [RFC3132]  Kempf, J., "Dormant Mode Host Alerting ("IP Paging")
-              Problem Statement", RFC 3132, DOI 10.17487/RFC3132, June
-              2001, <https://www.rfc-editor.org/info/rfc3132>.
+   [RFC2131]  Droms, R., "Dynamic Host Configuration Protocol",
+              RFC 2131, DOI 10.17487/RFC2131, March 1997,
+              <https://www.rfc-editor.org/info/rfc2131>.
 
    [RFC3646]  Droms, R., Ed., "DNS Configuration options for Dynamic
               Host Configuration Protocol for IPv6 (DHCPv6)", RFC 3646,
