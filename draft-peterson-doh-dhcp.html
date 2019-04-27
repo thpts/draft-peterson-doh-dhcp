@@ -411,11 +411,14 @@ ul.toc li {
 </pre>
 <p></p>
 
-<ul>
-<li>Code: The DoH DHCPv4 option (one octet).</li>
-<li>Length: The length, in octets of the URI template.</li>
-<li>URI Template: The DoH server available, encoded following the rules of <a href="#RFC3986" class="xref">[RFC3986]</a>.</li>
-</ul>
+<dl>
+<dt>Code:</dt>
+<dd style="margin-left: 8">The DoH DHCPv4 option (one octet).</dd>
+<dt>Length:</dt>
+<dd style="margin-left: 8">The length, in octets of the URI template.</dd>
+<dt>URI Template:</dt>
+<dd style="margin-left: 8">The DoH server available, encoded following the rules of <a href="#RFC3986" class="xref">[RFC3986]</a>.</dd>
+</dl>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#ipv6-dhcp-option" id="ipv6-dhcp-option">IPv6 DHCP Option</a>
 </h1>
@@ -433,11 +436,14 @@ ul.toc li {
 </pre>
 <p></p>
 
-<ul>
-<li>option-code: TODO (two octets)</li>
-<li>option-len: The length, in octects of the URI Template.</li>
-<li>URI Template: The DoH server</li>
-</ul>
+<dl>
+<dt>option-code:</dt>
+<dd style="margin-left: 8">TODO (two octets)</dd>
+<dt>option-len:</dt>
+<dd style="margin-left: 8">The length, in octects of the URI Template.</dd>
+<dt>URI Template:</dt>
+<dd style="margin-left: 8">The DoH server</dd>
+</dl>
 <h1 id="rfc.section.3.3">
 <a href="#rfc.section.3.3">3.3.</a> <a href="#the-doh-ipv6-ra-option" id="the-doh-ipv6-ra-option">The DoH IPv6 RA Option</a>
 </h1>
@@ -454,11 +460,14 @@ ul.toc li {
 </pre>
 <p></p>
 
-<ul>
-<li>Type: TODO (one octet)</li>
-<li>Length: 8-bit unsigned integer representing the entire length of all fields, in units of 8 bytes.</li>
-<li>URI Template: The DoH server available for use. This should be padded with NULL (0x0) to make the total option length (including the Type and Length fields) a multiple of 8 bytes.</li>
-</ul>
+<dl>
+<dt>Type:</dt>
+<dd style="margin-left: 8">TODO (one octet)</dd>
+<dt>Length:</dt>
+<dd style="margin-left: 8">8-bit unsigned integer representing the entire length of all fields, in units of 8 bytes.</dd>
+<dt>URI Template:</dt>
+<dd style="margin-left: 8">The DoH server available for use. This should be padded with NULL (0x0) to make the total option length (including the Type and Length fields) a multiple of 8 bytes.</dd>
+</dl>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>

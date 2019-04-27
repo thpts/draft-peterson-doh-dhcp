@@ -126,12 +126,12 @@ Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   o  Code: The DoH DHCPv4 option (one octet).
+   Code:  The DoH DHCPv4 option (one octet).
 
-   o  Length: The length, in octets of the URI template.
+   Length:  The length, in octets of the URI template.
 
-   o  URI Template: The DoH server available, encoded following the
-      rules of [RFC3986].
+   URI Template:  The DoH server available, encoded following the rules
+      of [RFC3986].
 
 3.2.  IPv6 DHCP Option
 
@@ -147,11 +147,11 @@ Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   o  option-code: TODO (two octets)
+   option-code:  TODO (two octets)
 
-   o  option-len: The length, in octects of the URI Template.
+   option-len:  The length, in octects of the URI Template.
 
-   o  URI Template: The DoH server
+   URI Template:  The DoH server
 
 3.3.  The DoH IPv6 RA Option
 
@@ -179,12 +179,12 @@ Internet-Draft   DoH using DHCP or Router Advertisements      April 2019
    .                                                               .
    +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
-   o  Type: TODO (one octet)
+   Type:  TODO (one octet)
 
-   o  Length: 8-bit unsigned integer representing the entire length of
-      all fields, in units of 8 bytes.
+   Length:  8-bit unsigned integer representing the entire length of all
+      fields, in units of 8 bytes.
 
-   o  URI Template: The DoH server available for use.  This should be
+   URI Template:  The DoH server available for use.  This should be
       padded with NULL (0x0) to make the total option length (including
       the Type and Length fields) a multiple of 8 bytes.
 
