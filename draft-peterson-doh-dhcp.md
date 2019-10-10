@@ -19,6 +19,7 @@ pi: [toc, sortrefs, symrefs]
 
 normative:
     RFC2119:
+    RFC3396:
     RFC3986:
 
 informative:
@@ -69,11 +70,8 @@ transmitted.
 URI Templates that contain a host name SHOULD only be sent where a DHCP server
 or Router provide name servers, as name resolution of any host name in the
 template will require clients to use the non-DoH servers provided or manual
-configuration.
-
-The maximum length of the URI template that can be carried in IPv4 DHCP is 255
-bytes, so URI templates longer than 255 bytes SHOULD NOT be used in IPv6 DHCP or
-IPv6 RA.
+configuration. URI Templates that are over 255 bytes in length MUST implement
+long option encoding as defined in {{RFC3396}}.
 
 ## IPv4 DHCP Option
 
